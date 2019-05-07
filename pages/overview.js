@@ -12,7 +12,7 @@ export default class Index extends Component {
 
   render() {
     return <>
-      <Head pageTitle="Smithy" />
+      <Head pageTitle="Smithy - Overview" />
       <Header path={this.props.path} />
     </>;
   }
