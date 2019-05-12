@@ -1,7 +1,8 @@
 import React from 'react';
 import BodyClassName from 'react-body-classname';
 import Link from 'next/Link';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import { Flexxor, Container } from 'src/page-ui';
 import logo from './logo.png';
 
 import { breakpointInfo, colors } from 'src/style-constants';
@@ -22,15 +23,6 @@ const HeaderPositioning = styled.div`
   flex-direction: row;
   background-color: ${colors.BLACK};
   color: ${colors.WHITE};
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-  justify-content: space-between;
-  width: ${breakpointInfo.DESKTOP.containerWidth}px;
 `;
 
 const HeaderLeftSide = styled.div`
@@ -75,34 +67,39 @@ const InnerLink = styled.a`
   }
 `;
 
+const HeaderStyle = createGlobalStyle`
+  body {
+    margin: ${MARGIN}px 0 0;
+    box-sizing: border-box;
+  }
+`;
+
 const LogoLink = styled.a`line-height: 1px;`;
 
 const pathMatches = (path, target) => path.startsWith(target);
 
 export default ({ path }) => (<>
-  <BodyClassName className={BODY_CLASS_NAME} />
-  <style type="text/css">{`.${BODY_CLASS_NAME} {
-    margin-top: ${MARGIN}px;
-    box-sizing: border-box;
-  }`}</style>
+  <HeaderStyle />
   <HeaderPositioning>
-    <HeaderContainer>
-      <HeaderLeftSide>
-        <LogoLink href="/">
-          <Logo src={logo} style={{ maxHeight: LOGO_MAX_HEIGHT }} />
-        </LogoLink>
-        <InnerLink href="https://docs.smithy.rs/smithy/">Docs</InnerLink>
-        <Link href="/overview">
-          <InnerLink isCurrent={pathMatches(path, "/overview")}>Overview</InnerLink>
-        </Link>
-        <Link href="/guide">
-          <InnerLink isCurrent={pathMatches(path, "/guide")}>Guide</InnerLink>
-        </Link>
-        <Link href="/news">
-          <InnerLink isCurrent={pathMatches(path, "/news")}>News</InnerLink>
-        </Link>
-      </HeaderLeftSide>
-      <InnerLink href="https://www.github.com/rbalicki2/smithy">Code</InnerLink>
-    </HeaderContainer>
+    <Container>
+      <Flexxor>
+        <HeaderLeftSide>
+          <LogoLink href="/">
+            <Logo src={logo} style={{ maxHeight: LOGO_MAX_HEIGHT }} />
+          </LogoLink>
+          <InnerLink href="https://docs.smithy.rs/smithy/">Docs</InnerLink>
+          <Link href="/overview">
+            <InnerLink isCurrent={pathMatches(path, "/overview")}>Overview</InnerLink>
+          </Link>
+          <Link href="/guide">
+            <InnerLink isCurrent={pathMatches(path, "/guide")}>Guide</InnerLink>
+          </Link>
+          <Link href="/news">
+            <InnerLink isCurrent={pathMatches(path, "/news")}>News</InnerLink>
+          </Link>
+        </HeaderLeftSide>
+        <InnerLink href="https://www.github.com/rbalicki2/smithy">Code</InnerLink>
+      </Flexxor>
+    </Container>
   </HeaderPositioning>
 </>);
