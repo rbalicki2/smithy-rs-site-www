@@ -53,8 +53,8 @@ export const CtaButton = styled.button`
 export const Flexxor = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
-  align-content: center;
+  align-items: ${props => props.alignItems || 'center'};
+  align-content: ${props => props.alignContent || 'center'};
   justify-content: space-between;
 `;
 
@@ -73,3 +73,16 @@ export const HeadingContainer = ({ children, ...rest }) =>
   <HeadingStyle backgroundColor={colors.ALMOST_BLACK}>
     <Container>{ children }</Container>
   </HeadingStyle>;
+
+export const BodyContainer = styled(Container)`
+  padding: 80px 0;
+`;
+
+export const BodySectionTitle = styled.h3`
+  font-weight: 500;
+`;
+
+export const BodyText = styled.p`
+  margin: 0 0 10px;
+  line-height: 1.3em;
+`;

@@ -1,7 +1,7 @@
 export const breakpointInfo = {
   DESKTOP: {
     minWidth: 1200,
-    containerWidth: 800,
+    containerWidth: 1008,
   },
 };
 
