@@ -84,9 +84,11 @@ export default ({ path }) => (<>
     <Container>
       <Flexxor>
         <HeaderLeftSide>
-          <LogoLink href="/">
-            <Logo src={logo} style={{ maxHeight: LOGO_MAX_HEIGHT }} />
-          </LogoLink>
+          <Link href="/">
+            <LogoLink>
+              <Logo src={logo} style={{ maxHeight: LOGO_MAX_HEIGHT }} />
+            </LogoLink>
+          </Link>
           <InnerLink href="https://docs.smithy.rs/smithy/">Docs</InnerLink>
           <Link href="/overview">
             <InnerLink isCurrent={pathMatches(path, "/overview")}>Overview</InnerLink>
