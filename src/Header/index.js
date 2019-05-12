@@ -89,7 +89,7 @@ export default ({ path }) => (<>
     <HeaderContainer>
       <HeaderLeftSide>
         <LogoLink href="/">
-          <Logo src={logo} />
+          <Logo src={logo} style={{ maxHeight: LOGO_MAX_HEIGHT }} />
         </LogoLink>
         <InnerLink href="https://docs.smithy.rs/smithy/">Docs</InnerLink>
         <Link href="/overview">
