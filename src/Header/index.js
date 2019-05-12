@@ -81,7 +81,7 @@ const HeaderStyle = createGlobalStyle`
 
 const LogoLink = styled(BaseLink)`line-height: 1px; cursor: pointer;`;
 
-const pathMatches = (path, target) => path === target;
+const pathMatches = (path, target) => path.startsWith(target);
 
 export default ({ path }) => (<>
   <HeaderStyle />
@@ -90,7 +90,7 @@ export default ({ path }) => (<>
       <Flexxor>
         <HeaderLeftSide>
           <Link href="/">
-            <LogoLink isCurrent={pathMatches(path, '/')}>
+            <LogoLink isCurrent={path === '/'}>
               <Logo style={{ height: LOGO_MAX_HEIGHT }} />
             </LogoLink>
           </Link>
