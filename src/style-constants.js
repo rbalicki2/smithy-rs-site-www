@@ -14,6 +14,8 @@ export const colors = {
   HIGHLIGHT_SOFT: '#41B7D8',
 
   OFF_WHITE: '#E6E6E6',
+  ALMOST_WHITE: '#F0F0F0',
+  CLOSE_TO_WHITE: '#FAFAFA',
 };
 
 export const fonts = {

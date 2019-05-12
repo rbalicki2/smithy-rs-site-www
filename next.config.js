@@ -24,6 +24,7 @@ module.exports = {
         options: { replaceAttrValues: { '#AAA': 'blue' }}
       }],
     });
+
     return config;
   },
 };

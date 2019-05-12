@@ -94,9 +94,8 @@ export default ({ path }) => (<>
               <Logo style={{ height: LOGO_MAX_HEIGHT }} />
             </LogoLink>
           </Link>
-          <InnerLink href="https://docs.smithy.rs/smithy/">Docs</InnerLink>
-          <Link href="/overview">
-            <InnerLink isCurrent={pathMatches(path, "/overview")}>Overview</InnerLink>
+          <Link href="/features">
+            <InnerLink isCurrent={pathMatches(path, "/features")}>Features</InnerLink>
           </Link>
           <Link href="/guide">
             <InnerLink isCurrent={pathMatches(path, "/guide")}>Guide</InnerLink>
@@ -104,6 +103,7 @@ export default ({ path }) => (<>
           <Link href="/news">
             <InnerLink isCurrent={pathMatches(path, "/news")}>News</InnerLink>
           </Link>
+          <InnerLink href="https://docs.smithy.rs/smithy/">Docs</InnerLink>
         </HeaderLeftSide>
         <InnerLink href="https://www.github.com/rbalicki2/smithy">Code</InnerLink>
       </Flexxor>
