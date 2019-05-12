@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import Header from 'src/Header';
 import Head from 'src/Head';
+import Footer from 'src/Footer';
 
 import {
   HeadingContainer,
@@ -23,6 +25,17 @@ const PageColumn = styled.div`
   }
 `;
 
+const CodeExample = styled.div`
+  border: 1px solid black;
+  background-color: #EEE;
+  align-self: stretch;
+  flex: 2;
+  margin-right: 10px;
+  &:last-child {
+    margin-right: 0;
+  }
+`
+
 export default class Index extends Component {
   static async getInitialProps({ asPath }) {
     return {
@@ -39,9 +52,9 @@ export default class Index extends Component {
         <PageSubtitle>
           Build WebAssembly applications with Rust.
         </PageSubtitle>
-        <a href="#get-started">
+        <Link href="/guide">
           <CtaButton isPrimary>Get started</CtaButton>
-        </a>
+        </Link>
       </HeadingContainer>
       <BodyContainer>
         <Flexxor alignItems="start">
@@ -81,6 +94,40 @@ export default class Index extends Component {
           </PageColumn>
         </Flexxor>
       </BodyContainer>
+      <BodyContainer>
+        <Flexxor alignItems="start">
+          <PageColumn>
+            <BodySectionTitle>A Simple Smithy App</BodySectionTitle>
+            <BodyText>The following is a simple hit counter.</BodyText>
+          </PageColumn>
+          <CodeExample>
+            Formatted code example
+          </CodeExample>
+        </Flexxor>
+      </BodyContainer>
+      <BodyContainer>
+        <Flexxor alignItems="start">
+          <CodeExample>
+            Formatted code example
+          </CodeExample>
+          <PageColumn>
+            <BodySectionTitle>Interact with Javascript</BodySectionTitle>
+            <BodyText>Interact with Javascript woo!</BodyText>
+          </PageColumn>
+        </Flexxor>
+      </BodyContainer>
+      <BodyContainer>
+        <Flexxor alignItems="start">
+          <PageColumn>
+            <BodySectionTitle>Futures? No Problem.</BodySectionTitle>
+            <BodyText>Yeah...</BodyText>
+          </PageColumn>
+          <CodeExample>
+            Formatted code example
+          </CodeExample>
+        </Flexxor>
+      </BodyContainer>
+      <Footer />
     </>;
   }
 }

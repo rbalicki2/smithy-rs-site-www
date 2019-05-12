@@ -79,6 +79,7 @@ export const BodyContainer = styled(Container)`
 `;
 
 export const BodySectionTitle = styled.h3`
+  margin-top: 0;
   font-weight: 500;
 `;
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import BodyClassName from 'react-body-classname';
-import Link from 'next/Link';
+import Link from 'next/link';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Flexxor, Container } from 'src/page-ui';
-import logo from './logo.png';
+import Logo from './logo.svg';
 
 import { breakpointInfo, colors } from 'src/style-constants';
+import { red } from 'ansi-colors';
 
 const BODY_CLASS_NAME = 'margin-top-class';
 const MARGIN = 60;
@@ -31,21 +32,20 @@ const HeaderLeftSide = styled.div`
   align-items: center;
 `;
 
-const LOGO_MAX_HEIGHT = 40;
-const Logo = styled.img`
-  max-height: ${LOGO_MAX_HEIGHT}px;
-  margin-right: 40px;
-`;
+const LOGO_MAX_HEIGHT = 50;
+// const Logo = styled.img`
+//   max-height: ${LOGO_MAX_HEIGHT}px;
+//   margin-right: 40px;
+// `;
 
-const InnerLink = styled.a`
+const BaseLink = styled.a`
   transition: 200ms color ease;
   padding-left: 10px;
   padding-right: 10px;
   margin-right: 20px;
   cursor: pointer;
   line-height: ${MARGIN - BORDER_SIZE}px;
-  border-bottom-width: ${BORDER_SIZE}px;
-  border-bottom-style: solid;
+  
   text-decoration: none;
   
   ${props => props.isCurrent
@@ -67,6 +67,11 @@ const InnerLink = styled.a`
   }
 `;
 
+const InnerLink = styled(BaseLink)`
+  border-bottom-width: ${BORDER_SIZE}px;
+  border-bottom-style: solid;
+`
+
 const HeaderStyle = createGlobalStyle`
   body {
     margin: ${MARGIN}px 0 0;
@@ -74,9 +79,9 @@ const HeaderStyle = createGlobalStyle`
   }
 `;
 
-const LogoLink = styled.a`line-height: 1px;`;
+const LogoLink = styled(BaseLink)`line-height: 1px; cursor: pointer;`;
 
-const pathMatches = (path, target) => path.startsWith(target);
+const pathMatches = (path, target) => path === target;
 
 export default ({ path }) => (<>
   <HeaderStyle />
@@ -85,8 +90,8 @@ export default ({ path }) => (<>
       <Flexxor>
         <HeaderLeftSide>
           <Link href="/">
-            <LogoLink>
-              <Logo src={logo} style={{ maxHeight: LOGO_MAX_HEIGHT }} />
+            <LogoLink isCurrent={pathMatches(path, '/')}>
+              <Logo style={{ height: LOGO_MAX_HEIGHT }} />
             </LogoLink>
           </Link>
           <InnerLink href="https://docs.smithy.rs/smithy/">Docs</InnerLink>

@@ -17,6 +17,12 @@ module.exports = {
           },
         },
       ],
+    }, {
+      test: /\.svg$/,
+      use: [{
+        loader: '@svgr/webpack',
+        options: { replaceAttrValues: { '#AAA': 'blue' }}
+      }],
     });
     return config;
   },
