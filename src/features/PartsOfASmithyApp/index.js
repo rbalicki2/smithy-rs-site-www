@@ -29,7 +29,7 @@ const LeftSide = styled.div`
 `;
 
 const RADIUS = 10;
-const LeftSideItem = styled.div`
+const LeftSideItem = styled.a`
   flex: 1;
   display: block;
   padding: 20px;
@@ -44,6 +44,10 @@ const LeftSideItem = styled.div`
   &:last-child {
     border-bottom-left-radius: ${RADIUS}px;
   }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const RightSide = styled.div`
@@ -76,7 +80,7 @@ export default () => <StateProvider initialValue="SYNTAX">{
             onClick={() => setCurrentView(key)}
             isSelected={key === currentView}
           >
-            {partsOfApp[key].leftText}
+            <div>{partsOfApp[key].leftText}</div>
           </LeftSideItem>
         )
       }

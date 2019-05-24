@@ -12,7 +12,6 @@ import {
   PageTitle,
   PageSubtitle,
   BodyContainer,
-  BodySectionTitle,
   BodyText,
   Flexxor,
 } from 'src/page-ui';

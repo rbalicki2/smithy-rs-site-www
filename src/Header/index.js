@@ -25,6 +25,7 @@ const HeaderPositioning = styled.div`
   background-color: ${colors.BLACK};
   color: ${colors.WHITE};
   box-shadow: ${BOX_SHADOW};
+  z-index: 1;
 `;
 
 const HeaderLeftSide = styled.div`

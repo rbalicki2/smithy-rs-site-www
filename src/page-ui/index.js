@@ -82,6 +82,7 @@ export const BodyContainer = styled(Container)`
 export const BodySectionTitle = styled.h3`
   margin-top: 0;
   font-weight: 500;
+  min-height: 2.5em;
 `;
 
 export const BodyText = styled.p`
@@ -92,10 +93,22 @@ export const BodyText = styled.p`
 export const CodeSnippet = styled.code`
   background-color: ${colors.OFF_WHITE};
   display: inline-block;
-  padding: 5px;
+  padding: 5px 0;
+  position: relative;
+  top: -1px;
 `;
 
-export const MultilineCodeSnippet = styled.div`
+export const MultilineCodeSnippet = styled.span`
+  display: block;
   padding: 15px 20px;
   background-color: ${colors.OFF_WHITE};
+`;
+
+export const LinkStyle = styled.a`
+  cursor: pointer;
+  color: ${colors.HIGHLIGHT_SOFT};
+  &:hover {
+    text-decoration: underline;
+  }
+  text-decoration: none;
 `;

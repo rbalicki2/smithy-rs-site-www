@@ -19,3 +19,74 @@ export default class Index extends Component {
     </>;
   }
 }
+
+// TODO put this in the guide
+// RESPONDING_TO_EVENTS: {
+//   leftText: <>Responding to events</>,
+//   bodyText: <>
+//     <p>Take the following example code:</p>
+//     <p>
+//       <code>
+//         let mut count = 1;<br />
+//         let app = smd!(<br/>
+//         &nbsp;&nbsp;on_hash_change=&#123;|_| count = 0&#125;;<br />
+//         &nbsp;&nbsp;&lt;div on_click=&#123;|_| count = count + 1&#125;&gt;<br />
+//         &nbsp;&nbsp;&nbsp;&nbsp;I have been clicked &#123; count &#125; times.<br/>
+//         &nbsp;&nbsp;&lt;/div&gt;<br />
+//         );
+//       </code>
+//     </p>
+//     <p>
+//       How can this compile? There is are multiple mutable references
+//       to <CodeSnippet>count</CodeSnippet> (in
+//       the <CodeSnippet>on_click</CodeSnippet> event handler and in
+//       the <CodeSnippet>on_hash_change</CodeSnippet> event handler), as well as
+//       an immutable reference to it (in <CodeSnippet>&#123; count &#125;</CodeSnippet>).
+//       In other words, this goes against
+//       the <LinkStyle href="https://doc.rust-lang.org/1.8.0/book/references-and-borrowing.html#the-rules">
+//         fundamental rules of borrowing in Rust
+//       </LinkStyle>, and should not compile!
+//     </p>
+//     <p>
+
+//     </p>
+//   </>,
+// },
+// CAPTURING_VARIABLES: {
+//   leftText: <>Capturing variables</>,
+//   bodyText: <>
+//     <p>
+//       In general, capturing and using variables
+//       in <CodeSnippet>smd!</CodeSnippet> invocations is easy: just do it, and it will work.
+//       However, this breaks down when it comes to nested macro invocations. For example,
+//       the following will not compile:
+//     </p>
+//     <p>
+//       <code>
+//       let mut count = Some("some string".to_string());<br />
+//       let mut byah = smd!(&#123;<br />
+//       &nbsp;&nbsp;match count &#123;<br />
+//       &nbsp;&nbsp;&nbsp;&nbsp;Some(_) =&gt; smd_no_move!(&gt;div on_click=&#123;|_| count = None&#125;&lt;found some&gt;/div&lt;),<br />
+//       &nbsp;&nbsp;&nbsp;&nbsp;None =&gt; smd!(none),<br />
+//       &nbsp;&nbsp;&#125;<br />
+//       &#125;);
+//       </code>
+//     </p>
+//     <p>
+//       There are two variants of the <CodeSnippet>smd!</CodeSnippet> macro. The
+//       aforementioned one, and <CodeSnippet>smd_no_move!</CodeSnippet>. (These names
+//       are not intuitive, and will change.) Each of these return a wrapper 
+//       around <CodeSnippet>Box&lt;FnMut(Phase) -> PhaseResult + 'a&gt;</CodeSnippet>.
+//       In the <CodeSnippet>smd!</CodeSnippet> case, this is
+//       a <CodeSnippet>move</CodeSnippet> closure. In
+//       the <CodeSnippet>smd_no_move!</CodeSnippet> case, it is not.
+//     </p>
+//     <p>
+//       A move closure captures its 
+//     </p>
+//     <p>
+//       Any variable that is referenced in an <CodeSnippet>smd!</CodeSnippet> macro
+//       invocation is captured 
+//     </p>
+//   </>,
+// },
