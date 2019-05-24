@@ -6,7 +6,7 @@ import { Flexxor, Container } from 'src/page-ui';
 import Logo from './logo.svg';
 
 import { breakpointInfo, colors } from 'src/style-constants';
-import { red } from 'ansi-colors';
+import { BOX_SHADOW } from 'src/page-ui';
 
 const BODY_CLASS_NAME = 'margin-top-class';
 const MARGIN = 60;
@@ -24,6 +24,7 @@ const HeaderPositioning = styled.div`
   flex-direction: row;
   background-color: ${colors.BLACK};
   color: ${colors.WHITE};
+  box-shadow: ${BOX_SHADOW};
 `;
 
 const HeaderLeftSide = styled.div`
@@ -47,6 +48,7 @@ const BaseLink = styled.a`
   line-height: ${MARGIN - BORDER_SIZE}px;
   
   text-decoration: none;
+  user-select: none;
   
   ${props => props.isCurrent
     ? `
@@ -72,7 +74,7 @@ const InnerLink = styled(BaseLink)`
   border-bottom-style: solid;
 `
 
-const HeaderStyle = createGlobalStyle`
+const HeaderGlobalStyle = createGlobalStyle`
   body {
     margin: ${MARGIN}px 0 0;
     box-sizing: border-box;
@@ -84,7 +86,7 @@ const LogoLink = styled(BaseLink)`line-height: 1px; cursor: pointer;`;
 const pathMatches = (path, target) => path.startsWith(target);
 
 export default ({ path }) => (<>
-  <HeaderStyle />
+  <HeaderGlobalStyle />
   <HeaderPositioning>
     <Container>
       <Flexxor>

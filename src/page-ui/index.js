@@ -15,6 +15,7 @@ export const PageSubtitle = styled.h2`
   margin-bottom: ${props => props.marginBottom || 50}px;
 `;
 
+export const BOX_SHADOW = `1px 1px rgba(238, 243, 246, 0.04), -1px -1px rgba(238, 243, 246, 0.04), 0 15px 80px 0px rgba(39, 45, 63, 0.1), 0 30px 20px -20px rgba(39, 45, 63, 0.06)`;
 export const CtaButton = styled.button`
   ${
     props => props.isPrimary
@@ -46,7 +47,7 @@ export const CtaButton = styled.button`
   box-shadow: none;
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 1px 1px rgba(238, 243, 246, 0.04), -1px -1px rgba(238, 243, 246, 0.04), 0 15px 80px 0px rgba(39, 45, 63, 0.1), 0 30px 20px -20px rgba(39, 45, 63, 0.06);
+    box-shadow: ${BOX_SHADOW};
   }
 `;
 
@@ -86,4 +87,15 @@ export const BodySectionTitle = styled.h3`
 export const BodyText = styled.p`
   margin: 0 0 10px;
   line-height: 1.3em;
+`;
+
+export const CodeSnippet = styled.code`
+  background-color: ${colors.OFF_WHITE};
+  display: inline-block;
+  padding: 5px;
+`;
+
+export const MultilineCodeSnippet = styled.div`
+  padding: 15px 20px;
+  background-color: ${colors.OFF_WHITE};
 `;

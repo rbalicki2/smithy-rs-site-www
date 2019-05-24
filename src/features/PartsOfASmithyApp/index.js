@@ -16,10 +16,13 @@ import {
   BodyText,
   Flexxor,
 } from 'src/page-ui';
+import { BOX_SHADOW } from 'src/page-ui';
 
 const LeftSide = styled.div`
   flex: 1;
-  align-self: center;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
   font-weight: 500;
   flex-grow: 0;
   min-width: 200px;
@@ -27,6 +30,7 @@ const LeftSide = styled.div`
 
 const RADIUS = 10;
 const LeftSideItem = styled.div`
+  flex: 1;
   display: block;
   padding: 20px;
   background-color: ${props => props.isSelected ? colors.OFF_WHITE : colors.CLOSE_TO_WHITE};
@@ -49,10 +53,21 @@ const RightSide = styled.div`
   padding: 20px;
   border-top-right-radius: ${RADIUS}px;
   border-bottom-right-radius: ${RADIUS}px;
+
+  p:first-child {
+    margin-top: 0;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const Wrapper = styled(Flexxor)`
+  box-shadow: ${BOX_SHADOW};
 `;
 
 export default () => <StateProvider initialValue="SYNTAX">{
-  (currentView, setCurrentView) => <Flexxor>
+  (currentView, setCurrentView) => <Wrapper>
     <LeftSide>
       {
         keys.map(key =>
@@ -67,7 +82,7 @@ export default () => <StateProvider initialValue="SYNTAX">{
       }
     </LeftSide>
     <RightSide>
-      { partsOfApp[currentView].text }
+      { partsOfApp[currentView].bodyText }
     </RightSide>
-  </Flexxor>
+  </Wrapper>
 }</StateProvider>

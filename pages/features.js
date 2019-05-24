@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { colors } from 'src/style-constants';
-import Link from 'next/link';
 import Header from 'src/Header';
 import Head from 'src/Head';
 import Footer from 'src/Footer';
@@ -37,13 +36,10 @@ export default class Index extends Component {
       >
         <PageTitle>Features of Smithy</PageTitle>
         <PageSubtitle color={colors.BLACK} marginBottom={5}>
-           See what makes Smithy special
+          See what makes Smithy great
         </PageSubtitle>
       </HeadingContainer>
       <BodyContainer>
-        <BodySectionTitle>
-          Parts of a Smithy application
-        </BodySectionTitle>
         <PartsOfASmithyApp />
       </BodyContainer>
       <BodyContainer>
