@@ -101,8 +101,8 @@ export default {
       </p>
       <p>
         Here, we&rsquo;ve created a component that will
-        execute <CodeSnippet>log("hash changed")</CodeSnippet> if the hash changes
-        and <CodeSnippet>log("div clicked")</CodeSnippet> if the div is clicked.
+        execute <CodeSnippet>log("hash changed")</CodeSnippet> if the hash changes,
+        and execute <CodeSnippet>log("div clicked")</CodeSnippet> if the div is clicked.
       </p>
       <p>
         Because they&rsquo;re not associated with any DOM
@@ -210,6 +210,14 @@ export default {
   },
   DEPLOYMENT: {
     leftText: <>Deploying to production</>,
-    bodyText: <>deploys</>,
+    bodyText: <>
+      <p>
+        Smithy can be deployed to production using
+        the <LinkStyle href="https://github.com/rbalicki2/smithy_app_server">
+          <CodeSnippet>smithy_app_server</CodeSnippet>
+        </LinkStyle> repository. As Smithy matures, the CLI experience
+        will also improve.
+      </p>
+    </>,
   },
 };

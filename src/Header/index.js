@@ -3,7 +3,7 @@ import BodyClassName from 'react-body-classname';
 import Link from 'next/link';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Flexxor, Container } from 'src/page-ui';
-import Logo from './logo.svg';
+import Logo from 'src/SmithyLogo';
 
 import { breakpointInfo, colors } from 'src/style-constants';
 import { BOX_SHADOW } from 'src/page-ui';
@@ -35,10 +35,6 @@ const HeaderLeftSide = styled.div`
 `;
 
 const LOGO_MAX_HEIGHT = 50;
-// const Logo = styled.img`
-//   max-height: ${LOGO_MAX_HEIGHT}px;
-//   margin-right: 40px;
-// `;
 
 const BaseLink = styled.a`
   transition: 200ms color ease;
@@ -82,7 +78,7 @@ const HeaderGlobalStyle = createGlobalStyle`
   }
 `;
 
-const LogoLink = styled(BaseLink)`line-height: 1px; cursor: pointer;`;
+const LogoLink = styled(BaseLink)`line-height: 1px; cursor: pointer; padding-left: 0;`;
 
 const pathMatches = (path, target) => path.startsWith(target);
 
@@ -94,7 +90,7 @@ export default ({ path }) => (<>
         <HeaderLeftSide>
           <Link href="/">
             <LogoLink isCurrent={path === '/'}>
-              <Logo style={{ height: LOGO_MAX_HEIGHT }} />
+              <Logo />
             </LogoLink>
           </Link>
           <Link href="/features">

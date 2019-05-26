@@ -15,6 +15,7 @@ import {
   BodySectionTitle,
   BodyText,
   Flexxor,
+  BOX_SHADOW,
 } from 'src/page-ui';
 
 const PageColumn = styled.div`
@@ -26,7 +27,7 @@ const PageColumn = styled.div`
 `;
 
 const CodeExample = styled.div`
-  border: 1px solid black;
+  box-shadow: ${BOX_SHADOW};
   background-color: #EEE;
   align-self: stretch;
   flex: 2;
@@ -34,7 +35,9 @@ const CodeExample = styled.div`
   &:last-child {
     margin-right: 0;
   }
-`
+  border-radius: 10px;
+  padding: 10px;
+`;
 
 export default class Index extends Component {
   static async getInitialProps({ asPath }) {
