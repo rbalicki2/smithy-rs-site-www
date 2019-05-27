@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { colors, breakpointInfo } from 'src/style-constants';
+import { colors, breakpointInfo, visibilityBreak } from 'src/style-constants';
 
 export const PageTitle = styled.h1`
   color: ${colors.HIGHLIGHT};
-  font-size: 50px;
+  font-size: 3rem;
   text-shadow: 0 2px 0 rgba(0,0,0,.25);
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 `;
 
 export const PageSubtitle = styled.h2`
@@ -31,14 +31,12 @@ export const CtaButton = styled.button`
   border-radius: 10000px;
   border: none;
   -webkit-appearance: none;
-  font-size: 30px;
+  font-size: 2rem;
   padding: 0.4em 1.25em;
   outline: none;
   cursor: pointer;
 
   transition: all 200ms ease;
-  &:focus {}
-
   &:active:hover {
     box-shadow: none;
     transform: translateY(2px);
@@ -60,8 +58,11 @@ export const Flexxor = styled.div`
 `;
 
 export const Container = styled.div`
-  width: ${breakpointInfo.DESKTOP.containerWidth}px;
+  width: calc(100% - ${2 * breakpointInfo.MOBILE.containerPadding}px);
   margin: 0 auto;
+  ${breakpointInfo.DESKTOP.mediaQuery} {
+    width: ${breakpointInfo.DESKTOP.containerWidth}px;
+  }
 `;
 
 const HeadingStyle = styled.div`
@@ -80,9 +81,8 @@ export const BodyContainer = styled(Container)`
 `;
 
 export const BodySectionTitle = styled.h3`
-  margin-top: 0;
+  margin: 2rem 0 1rem;
   font-weight: 500;
-  min-height: 2.5em;
 `;
 
 export const BodyText = styled.p`
@@ -111,4 +111,18 @@ export const LinkStyle = styled.a`
     text-decoration: underline;
   }
   text-decoration: none;
+`;
+
+export const OnlyDesktop = styled.div`
+  display: none;
+  @media only screen and (min-width: ${visibilityBreak}px) {
+    display: block;
+  }
+`;
+
+export const OnlyMobile = styled.div`
+  display: block;
+  @media only screen and (min-width: ${visibilityBreak}px) {
+    display: none;
+  }
 `;

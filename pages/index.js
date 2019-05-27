@@ -20,7 +20,7 @@ import {
 
 const PageColumn = styled.div`
   flex: 1;
-  margin-right: 10px;
+  margin-right: 1rem;
   &:last-child {
     margin-right: 0;
   }
@@ -31,12 +31,16 @@ const CodeExample = styled.div`
   background-color: #EEE;
   align-self: stretch;
   flex: 2;
-  margin-right: 10px;
+  margin-right: 1rem;
   &:last-child {
     margin-right: 0;
   }
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 1rem;
+  padding: 1rem;
+`;
+
+const TopSectionTitle = styled(BodySectionTitle)`
+  min-height: 3rem;
 `;
 
 export default class Index extends Component {
@@ -62,14 +66,14 @@ export default class Index extends Component {
       <BodyContainer>
         <Flexxor alignItems="start">
           <PageColumn>
-            <BodySectionTitle>Write Idiomatic Rust</BodySectionTitle>
+            <TopSectionTitle>Write Idiomatic Rust</TopSectionTitle>
             <BodyText>
               Smithy apps are written using idiomatic Rust code. You won't learn
               to build Smithy apps, you&rsquo;ll learn Rust.
             </BodyText>
           </PageColumn>
           <PageColumn>
-            <BodySectionTitle>Component-Based</BodySectionTitle>
+            <TopSectionTitle>Component-Based</TopSectionTitle>
             <BodyText>
               Smithy apps are built up from smaller components.
             </BodyText>
@@ -78,7 +82,7 @@ export default class Index extends Component {
             </BodyText>
           </PageColumn>
           <PageColumn>
-            <BodySectionTitle>Typesafe</BodySectionTitle>
+            <TopSectionTitle>Typesafe</TopSectionTitle>
             <BodyText>
               If you build a Smithy app, you give up very few of the compiler's
               guarantees. Smithy is the most typesafe framework for building
@@ -86,7 +90,7 @@ export default class Index extends Component {
             </BodyText>
           </PageColumn>
           <PageColumn>
-            <BodySectionTitle>Unopinionated and Boilerplate-Free</BodySectionTitle>
+            <TopSectionTitle>Unopinionated and Boilerplate-Free</TopSectionTitle>
             <BodyText>
               Manage your app's state however you want to. And don&rsquo;t write extra
               code to do so.

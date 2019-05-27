@@ -15,6 +15,8 @@ import {
   BodySectionTitle,
   BodyText,
   Flexxor,
+  OnlyDesktop,
+  OnlyMobile,
 } from 'src/page-ui';
 import { BOX_SHADOW } from 'src/page-ui';
 
@@ -25,7 +27,7 @@ const LeftSide = styled.div`
   flex-direction: column;
   font-weight: 500;
   flex-grow: 0;
-  min-width: 200px;
+  min-width: 12rem;
 `;
 
 const RADIUS = 10;
@@ -70,23 +72,35 @@ const Wrapper = styled(Flexxor)`
   box-shadow: ${BOX_SHADOW};
 `;
 
-export default () => <StateProvider initialValue="SYNTAX">{
-  (currentView, setCurrentView) => <Wrapper>
-    <LeftSide>
-      {
-        keys.map(key =>
-          <LeftSideItem
-            key={key}
-            onClick={() => setCurrentView(key)}
-            isSelected={key === currentView}
-          >
-            <div>{partsOfApp[key].leftText}</div>
-          </LeftSideItem>
-        )
-      }
-    </LeftSide>
-    <RightSide>
-      { partsOfApp[currentView].bodyText }
-    </RightSide>
-  </Wrapper>
-}</StateProvider>
+export default () => <>
+  <OnlyDesktop>
+    <StateProvider initialValue="SYNTAX">{
+      (currentView, setCurrentView) => <Wrapper>
+        <LeftSide>
+          {
+            keys.map(key =>
+              <LeftSideItem
+                key={key}
+                onClick={() => setCurrentView(key)}
+                isSelected={key === currentView}
+              >
+                <div>{partsOfApp[key].leftText}</div>
+              </LeftSideItem>
+            )
+          }
+        </LeftSide>
+        <RightSide>
+          { partsOfApp[currentView].bodyText }
+        </RightSide>
+      </Wrapper>
+    }</StateProvider>
+  </OnlyDesktop>
+  <OnlyMobile>
+    {
+      keys.map(key => <>
+        <BodySectionTitle>{partsOfApp[key].leftText}</BodySectionTitle>
+        <BodyText>{partsOfApp[key].bodyText}</BodyText>
+      </>)
+    }
+  </OnlyMobile>
+</>
