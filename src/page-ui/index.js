@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors, breakpointInfo, visibilityBreak } from 'src/style-constants';
+import HEADER_HEIGHT from 'src/Header/height';
 
 export const PageTitle = styled.h1`
   color: ${colors.HIGHLIGHT};
@@ -85,7 +86,12 @@ export const BodySectionTitle = styled.h3`
   font-weight: 500;
 `;
 
-export const BodyText = styled.p`
+export const BodySubTitle = styled.h2`
+  margin: 2rem 0 1rem;
+  font-weight: 500;
+`;
+
+export const BodyText = styled.div`
   margin: 0 0 10px;
   line-height: 1.3em;
 `;
@@ -100,8 +106,11 @@ export const CodeSnippet = styled.code`
 
 export const MultilineCodeSnippet = styled.span`
   display: block;
-  padding: 15px 20px;
+  padding: 20px;
+  margin-bottom: 20px;
   background-color: ${colors.OFF_WHITE};
+  box-shadow: ${BOX_SHADOW};
+  border-radius: 5px;
 `;
 
 export const LinkStyle = styled.a`
@@ -124,5 +133,14 @@ export const OnlyMobile = styled.div`
   display: block;
   @media only screen and (min-width: ${visibilityBreak}px) {
     display: none;
+  }
+`;
+
+export const Anchor = styled.a`
+  visibility: hidden;
+  position: absolute;
+  top: -${HEADER_HEIGHT}px;
+  &::after {
+    content: "foo";
   }
 `;

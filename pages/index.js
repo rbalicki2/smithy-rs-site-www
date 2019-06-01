@@ -35,7 +35,7 @@ const CodeExample = styled.div`
   &:last-child {
     margin-right: 0;
   }
-  border-radius: 1rem;
+  border-radius: 5px;
   padding: 1rem;
 `;
 

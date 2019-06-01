@@ -6,7 +6,7 @@ import { BOX_SHADOW } from 'src/page-ui';
 
 import {
   Flexxor,
-  BodySectionTitle,
+  BodySubTitle,
   BodyText,
   CodeSnippet,
   MultilineCodeSnippet,
@@ -41,7 +41,7 @@ const RightSide = styled.div`
 `;
 
 export default () => <>
-  <BodySectionTitle>Smithy app lifecycle</BodySectionTitle>
+  <BodySubTitle>Smithy app lifecycle</BodySubTitle>
   <BodyText>
     A Smithy app will go through several phases.
     The code that goes into the contents of the <CodeSnippet>smd!</CodeSnippet> macro

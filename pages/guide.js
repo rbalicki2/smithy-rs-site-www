@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 
+import { colors } from 'src/style-constants';
 import Header from 'src/Header';
 import Head from 'src/Head';
 import Footer from 'src/Footer';
+import GuideSections from 'src/guide/GuideSections';
+
+import {
+  HeadingContainer,
+  PageTitle,
+  PageSubtitle,
+  BodyContainer,
+} from 'src/page-ui';
 
 export default class Index extends Component {
   static async getInitialProps({ asPath }) {
@@ -15,10 +24,30 @@ export default class Index extends Component {
     return <>
       <Head pageTitle="Smithy - Guide" />
       <Header path={this.props.path} />
+      <HeadingContainer
+        backgroundColor={colors.WHITE}
+        textAlign="left"
+        paddingTop={5}
+        paddingBottom={5}
+      >
+        <PageTitle>Guide</PageTitle>
+        <PageSubtitle color={colors.BLACK} marginBottom={5}>
+          Learn to use Smithy like a pro
+        </PageSubtitle>
+      </HeadingContainer>
+      <BodyContainer>
+        <GuideSections />
+      </BodyContainer>
       <Footer />
     </>;
   }
 }
+
+// supported anchors
+// #smd-syntax
+// #feature-flags
+// #how-smd-works
+// #nested-calls-to-smd
 
 // TODO put this in the guide
 // RESPONDING_TO_EVENTS: {

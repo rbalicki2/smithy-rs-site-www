@@ -7,13 +7,13 @@ import Logo from 'src/SmithyLogo';
 
 import { breakpointInfo, colors } from 'src/style-constants';
 import { BOX_SHADOW } from 'src/page-ui';
+import HEADER_HEIGHT from './height';
 
 const BODY_CLASS_NAME = 'margin-top-class';
-const MARGIN = 60;
 const BORDER_SIZE = 2;
 
 const HeaderPositioning = styled.div`
-  height: ${MARGIN}px;
+  height: ${HEADER_HEIGHT}px;
   position: fixed;
   top: 0;
   left: 0;
@@ -42,7 +42,7 @@ const BaseLink = styled.a`
   padding-right: 10px;
   margin-right: 20px;
   cursor: pointer;
-  line-height: ${MARGIN - BORDER_SIZE}px;
+  line-height: ${HEADER_HEIGHT - BORDER_SIZE}px;
   
   text-decoration: none;
   user-select: none;
@@ -73,7 +73,7 @@ const InnerLink = styled(BaseLink)`
 
 const HeaderGlobalStyle = createGlobalStyle`
   body {
-    margin: ${MARGIN}px 0 0;
+    margin: ${HEADER_HEIGHT}px 0 0;
     box-sizing: border-box;
   }
 `;

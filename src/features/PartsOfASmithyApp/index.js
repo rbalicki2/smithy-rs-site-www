@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { colors } from 'src/style-constants';
 
@@ -8,10 +8,6 @@ import partsOfApp from './partsOfApp';
 const keys = Object.keys(partsOfApp);
 
 import {
-  HeadingContainer,
-  PageTitle,
-  PageSubtitle,
-  BodyContainer,
   BodySectionTitle,
   BodyText,
   Flexxor,
@@ -97,10 +93,10 @@ export default () => <>
   </OnlyDesktop>
   <OnlyMobile>
     {
-      keys.map(key => <>
+      keys.map(key => <Fragment key={key}>
         <BodySectionTitle>{partsOfApp[key].leftText}</BodySectionTitle>
         <BodyText>{partsOfApp[key].bodyText}</BodyText>
-      </>)
+      </Fragment>)
     }
   </OnlyMobile>
 </>

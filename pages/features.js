@@ -12,8 +12,6 @@ import {
   PageTitle,
   PageSubtitle,
   BodyContainer,
-  BodyText,
-  Flexxor,
 } from 'src/page-ui';
 
 export default class Index extends Component {
