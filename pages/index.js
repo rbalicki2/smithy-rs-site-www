@@ -59,7 +59,7 @@ export default class Index extends Component {
         <PageSubtitle>
           Build WebAssembly applications with Rust.
         </PageSubtitle>
-        <Link href="/guide">
+        <Link href="/guide#getting-started">
           <CtaButton isPrimary>Get started</CtaButton>
         </Link>
       </HeadingContainer>

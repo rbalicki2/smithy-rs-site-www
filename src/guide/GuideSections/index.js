@@ -5,11 +5,11 @@ import {
   BodyText,
   Anchor,
 } from 'src/page-ui';
-import sectionData from './sectionData';
+import sectionData from '../sectionData';
 
 export default () => sectionData.map(data => <Fragment key={data.anchor}>
   <BodySubTitle>
-    <Anchor name={data.anchor} />
+    <Anchor name={data.anchor} id={data.anchor} />
     {data.title}
   </BodySubTitle>
   <BodyText>

@@ -3,6 +3,7 @@ import {
   LinkStyle,
 } from 'src/page-ui';
 import Link from 'next/link';
+import BasicSnippet from 'src/snippets/BasicSnippet';
 
 export default {
   SYNTAX: {
@@ -14,22 +15,7 @@ export default {
         React&rsquo;s <CodeSnippet>jsx</CodeSnippet> syntax. An example:
       </p>
       <p>
-        <code>
-          let my_app = smd!(<br />
-          &nbsp;&nbsp;on_hash_change=&#123;on_hash_change_callback&#125;;<br />
-          &nbsp;&nbsp;post_render=&#123;post_render_callback&#125;;<br />
-          &nbsp;&nbsp;// comments can go anywhere<br />
-          &nbsp;&nbsp;&#123; interpolated_item &#125;<br />
-          &nbsp;&nbsp;&lt;div<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;ref=&#123;my_ref&#125;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;on_click=&#123;handle_on_click&#125;<br />
-          &nbsp;&nbsp;&gt;<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;Text can go inside of DOM nodes...<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;hr /&gt;<br />
-          &nbsp;&nbsp;&lt;/div&gt;<br />
-          &nbsp;&nbsp;But it can also go outside of DOM nodes.<br />
-          );
-        </code>
+        <BasicSnippet />
       </p>
       <p>
         See a complete description of
@@ -40,8 +26,19 @@ export default {
     </>,
   },
   INTERPOLATION: {
-    leftText: <>Interpolation and Sub-components</>,
+    leftText: <>Interpolation and sub-components</>,
     bodyText: <>
+      <p>
+        Interpolation in Smithy is easy: just place the item between curly
+        brackets (<CodeSnippet>&#123;</CodeSnippet> and <CodeSnippet>&#125;</CodeSnippet>).
+        It&rsquo;s as easy as this:
+      </p>
+      <p>
+        <code>
+          let count = 42;<br />
+          let component = smd!(&lt;div&gt;&#123; count &#125;&lt;/div&gt;);
+        </code>
+      </p>
       <p>
         As long as an item implements the <CodeSnippet>Component</CodeSnippet> trait,
         it can be interpolated. <CodeSnippet>Component</CodeSnippet> has already been

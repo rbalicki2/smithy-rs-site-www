@@ -9,7 +9,7 @@ import {
   BodySubTitle,
   BodyText,
   CodeSnippet,
-  MultilineCodeSnippet,
+  MultilineCode,
   OnlyDesktop,
   OnlyMobile,
 } from 'src/page-ui';
@@ -55,27 +55,23 @@ export default () => <>
       <p>
         Consider the following code:
       </p>
-      <p>
-        <MultilineCodeSnippet>
-          <code>
-            #[wasm_bindgen]<br />
-            pub fn start(root_element: web_sys::Element) &#123;<br />
-            &nbsp;&nbsp;let mut click_count = 0;<br />
-            &nbsp;&nbsp;let mut div_ref: Option&lt;web_sys::HtmlElement&gt; = None;<br />
-            &nbsp;&nbsp;let app: SmithyComponent = smd!(<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;post_render=&#123;|| do_something_with(div_ref)&#125;;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ref=&#123;&amp; mut div_ref&#125;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on_click=&#123;|_| click_count = click_count + 1&#125;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&gt;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This div has been clicked &#123;click_count&#125; times<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
-            &nbsp;&nbsp;);<br />
-            &nbsp;&nbsp;smithy::mount(Box::new(app), root_element);<br />
-            &#125;
-          </code>
-        </MultilineCodeSnippet>
-      </p>
+      <MultilineCode>
+        #[wasm_bindgen]<br />
+        pub fn start(root_element: web_sys::Element) &#123;<br />
+        &nbsp;&nbsp;let mut click_count = 0;<br />
+        &nbsp;&nbsp;let mut div_ref: Option&lt;web_sys::HtmlElement&gt; = None;<br />
+        &nbsp;&nbsp;let app: SmithyComponent = smd!(<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;post_render=&#123;|| do_something_with(div_ref)&#125;;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ref=&#123;&amp; mut div_ref&#125;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on_click=&#123;|_| click_count = click_count + 1&#125;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This div has been clicked &#123;click_count&#125; times<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+        &nbsp;&nbsp;);<br />
+        &nbsp;&nbsp;smithy::mount(Box::new(app), root_element);<br />
+        &#125;
+      </MultilineCode>
       <p>
         In this, we are constructing a <CodeSnippet>SmithyComponent</CodeSnippet>, which is a wrapper
         around <CodeSnippet>Box&lt;FnMut(Phase) -> PhaseResult + 'a&gt;</CodeSnippet>.
@@ -126,19 +122,15 @@ export default () => <>
         the number of characters a user could enter, you might have
         a <CodeSnippet>post_render</CodeSnippet> callback like so:
       </p>
-      <p>
-        <MultilineCodeSnippet>
-          <code>
-            post_render=&#123;|| &#123;<br />
-            &nbsp;&nbsp;if let Some(html_input_element) = input_ref.and_then(<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;|el| el.dyn_into::&lt;web_sys::HtmlInputElement&gt;()<br />
-            &nbsp;&nbsp;) &#123;<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;html_element.set_value(&amp;input_value_in_state)<br />
-            &nbsp;&nbsp;&#125;<br />
-            &#125;&#125;
-          </code>
-        </MultilineCodeSnippet>
-      </p>
+      <MultilineCode>
+        post_render=&#123;|| &#123;<br />
+        &nbsp;&nbsp;if let Some(html_input_element) = input_ref.and_then(<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;|el| el.dyn_into::&lt;web_sys::HtmlInputElement&gt;()<br />
+        &nbsp;&nbsp;) &#123;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;html_element.set_value(&amp;input_value_in_state)<br />
+        &nbsp;&nbsp;&#125;<br />
+        &#125;&#125;
+      </MultilineCode>
       <p>
         <i>
           <CodeSnippet>wasm_bindgen::JsCast</CodeSnippet> must be in scope

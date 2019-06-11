@@ -5,6 +5,7 @@ import Header from 'src/Header';
 import Head from 'src/Head';
 import Footer from 'src/Footer';
 import GuideSections from 'src/guide/GuideSections';
+import GuideOverview from 'src/guide/GuideOverview';
 
 import {
   HeadingContainer,
@@ -36,6 +37,7 @@ export default class Index extends Component {
         </PageSubtitle>
       </HeadingContainer>
       <BodyContainer>
+        <GuideOverview />
         <GuideSections />
       </BodyContainer>
       <Footer />
@@ -44,6 +46,7 @@ export default class Index extends Component {
 }
 
 // supported anchors
+// #getting-started
 // #smd-syntax
 // #feature-flags
 // #how-smd-works

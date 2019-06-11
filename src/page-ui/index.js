@@ -87,6 +87,7 @@ export const BodySectionTitle = styled.h3`
 `;
 
 export const BodySubTitle = styled.h2`
+  position: relative;
   margin: 2rem 0 1rem;
   font-weight: 500;
 `;
@@ -144,3 +145,6 @@ export const Anchor = styled.a`
     content: "foo";
   }
 `;
+
+export const MultilineCode = ({ children }) =>
+  <p><MultilineCodeSnippet><code>{ children }</code></MultilineCodeSnippet></p>;

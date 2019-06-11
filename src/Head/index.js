@@ -16,6 +16,9 @@ const GlobalStyles = createGlobalStyle`
       font-size: ${MAX_BASE_FONT_SIZE}px;
     }
   }
+  code {
+    white-space: nowrap;
+  }
 `;
 
 export default ({
