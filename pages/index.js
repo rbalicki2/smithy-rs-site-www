@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -16,7 +16,10 @@ import {
   BodyText,
   Flexxor,
   BOX_SHADOW,
+  OnlyMobile,
+  OnlyDesktop,
 } from 'src/page-ui';
+import columnData from 'src/home/columnData';
 
 const PageColumn = styled.div`
   flex: 1;
@@ -64,42 +67,24 @@ export default class Index extends Component {
         </Link>
       </HeadingContainer>
       <BodyContainer>
-        <Flexxor alignItems="start">
-          <PageColumn>
-            <TopSectionTitle>Write Idiomatic Rust</TopSectionTitle>
-            <BodyText>
-              Smithy apps are written using idiomatic Rust code. You won't learn
-              to build Smithy apps, you&rsquo;ll learn Rust.
-            </BodyText>
-          </PageColumn>
-          <PageColumn>
-            <TopSectionTitle>Component-Based</TopSectionTitle>
-            <BodyText>
-              Smithy apps are built up from smaller components.
-            </BodyText>
-            <BodyText>
-              Encapsulation? Yes, please!
-            </BodyText>
-          </PageColumn>
-          <PageColumn>
-            <TopSectionTitle>Typesafe</TopSectionTitle>
-            <BodyText>
-              If you build a Smithy app, you give up very few of the compiler's
-              guarantees. Smithy is the most typesafe framework for building
-              WebAssembly apps using Rust.
-            </BodyText>
-          </PageColumn>
-          <PageColumn>
-            <TopSectionTitle>Unopinionated and Boilerplate-Free</TopSectionTitle>
-            <BodyText>
-              Manage your app's state however you want to. And don&rsquo;t write extra
-              code to do so.
-            </BodyText>
-            <BodyText>
-              Smithy is there to give you the support you need, and then get out of your way.
-            </BodyText>
-          </PageColumn>
-        </Flexxor>
+        <OnlyDesktop>
+          <Flexxor alignItems="start">
+            {
+              columnData.map(({ title, bodyText }) => <PageColumn key={title}>
+                <TopSectionTitle>{ title }</TopSectionTitle>
+                { bodyText }
+              </PageColumn>)
+            }
+          </Flexxor>
+        </OnlyDesktop>
+        <OnlyMobile>
+          {
+            columnData.map(({ title, bodyText }) => <Fragment key={title}>
+              <BodySectionTitle>{ title }</BodySectionTitle>
+              { bodyText }
+            </Fragment>)
+          }
+        </OnlyMobile>
       </BodyContainer>
       <BodyContainer>
         <Flexxor alignItems="start">
@@ -108,7 +93,7 @@ export default class Index extends Component {
             <BodyText>The following is a simple hit counter.</BodyText>
           </PageColumn>
           <CodeExample>
-            Formatted code example
+            TODO example
           </CodeExample>
         </Flexxor>
       </BodyContainer>

@@ -301,21 +301,13 @@ export default [
       <p>
         The inner call to <code>smd!</code> also takes ownership
         of <code>some_vec</code> (because that variable is used in the closure).
-        However, it goes out of scope, <i>dropping <code>some_vec</code> with
-        it.</i>
-      </p>
-      <p>
-        The inner call to <code>smd!</code> attempts to take ownership of the
-        variable <code>some_vec</code>. However, <code>smd!</code> returns a wrapper
-        around an <code>FnMut</code> closure - thus, it needs to be callable multiple
-        times. This would prevent the outer <code>smd!</code> closure to be
-        callable multiple times, and thus the compiler fails to let this compile.
+        But this means that the outer <code>smd!</code> invocation cannot be called
+        multiple times!
       </p>
       <p>
         There are several ways out of this conundrum. For example, avoiding
-        nested calls to <code>smd!</code>. However, when this
-        is infeasible (which will happen often), you can
-        use the <code>smd_no_move!</code> macro.
+        nested calls to <code>smd!</code>. However, this will often be infeasible,
+        and in those cases you can use the <code>smd_no_move!</code> macro.
       </p>
       <p>
         <code>smd_no_move!</code> does the same thing as <code>smd!</code>,
