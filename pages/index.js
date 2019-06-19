@@ -20,6 +20,7 @@ import {
   OnlyDesktop,
 } from 'src/page-ui';
 import columnData from 'src/home/columnData';
+import bodyData from 'src/home/bodyData';
 
 const PageColumn = styled.div`
   flex: 1;
@@ -27,19 +28,6 @@ const PageColumn = styled.div`
   &:last-child {
     margin-right: 0;
   }
-`;
-
-const CodeExample = styled.div`
-  box-shadow: ${BOX_SHADOW};
-  background-color: #EEE;
-  align-self: stretch;
-  flex: 2;
-  margin-right: 1rem;
-  &:last-child {
-    margin-right: 0;
-  }
-  border-radius: 5px;
-  padding: 1rem;
 `;
 
 const TopSectionTitle = styled(BodySectionTitle)`
@@ -86,39 +74,33 @@ export default class Index extends Component {
           }
         </OnlyMobile>
       </BodyContainer>
-      <BodyContainer>
-        <Flexxor alignItems="start">
-          <PageColumn>
-            <BodySectionTitle>A Simple Smithy App</BodySectionTitle>
-            <BodyText>The following is a simple hit counter.</BodyText>
-          </PageColumn>
-          <CodeExample>
-            TODO example
-          </CodeExample>
-        </Flexxor>
-      </BodyContainer>
-      <BodyContainer>
-        <Flexxor alignItems="start">
-          <CodeExample>
-            Formatted code example
-          </CodeExample>
-          <PageColumn>
-            <BodySectionTitle>Interact with Javascript</BodySectionTitle>
-            <BodyText>Interact with Javascript woo!</BodyText>
-          </PageColumn>
-        </Flexxor>
-      </BodyContainer>
-      <BodyContainer>
-        <Flexxor alignItems="start">
-          <PageColumn>
-            <BodySectionTitle>Futures? No Problem.</BodySectionTitle>
-            <BodyText>Yeah...</BodyText>
-          </PageColumn>
-          <CodeExample>
-            Formatted code example
-          </CodeExample>
-        </Flexxor>
-      </BodyContainer>
+      <OnlyDesktop>
+        {
+          bodyData.map((item, i) => {
+            const descriptionItem = <PageColumn key="description">{item.description}</PageColumn>;
+            const codeItem = <Fragment key="code">{item.code}</Fragment>;
+            const items = i % 2 === 0
+              ? [descriptionItem, codeItem]
+              : [codeItem, descriptionItem];
+            
+            return (<BodyContainer key={i}>
+              <Flexxor alignItems="start">
+                { items }
+              </Flexxor>
+            </BodyContainer>);
+          })
+        }
+      </OnlyDesktop>
+      <OnlyMobile>
+        {
+          bodyData.map((item, i) => (
+            <BodyContainer key={i}>
+              { item.description }
+              { item.code }
+            </BodyContainer>
+          ))
+        }
+      </OnlyMobile>
       <Footer />
     </>;
   }
