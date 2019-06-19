@@ -5,9 +5,10 @@ import {
   BodySectionTitle,
   BodyText,
   BOX_SHADOW,
+  CodeSnippet,
 } from 'src/page-ui';
 
-const CodeExample = styled.div`
+const CodeExample = styled.code`
   box-shadow: ${BOX_SHADOW};
   background-color: #EEE;
   align-self: stretch;
@@ -24,28 +25,53 @@ export default [
   {
     description: <>
       <BodySectionTitle>A Simple Smithy App</BodySectionTitle>
-      <BodyText>The following is a simple hit counter.</BodyText>
+      <BodyText>Every framework needs a hit counter example.</BodyText>
     </>,
     code: <CodeExample>
-      TODO example
+      #[wasm_bindgen]<br />
+      pub fn start(root_element: web_sys::Element) &#123;<br />
+      &nbsp;&nbsp;let mut count = 0;<br />
+      &nbsp;&nbsp;let app = smithy::smd!(<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div on_click=&#123;|_| count = count + 1&#125;&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I have been clicked &lt;b&gt;&#123;count&#125;&lt;/b&gt; times.<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+      &nbsp;&nbsp;);<br />
+      <br />
+      &nbsp;&nbsp;smithy::mount(Box::new(app), root_element);<br />
+      &#125;
     </CodeExample>,
   },
   {
     description: <>
       <BodySectionTitle>Interact with Javascript</BodySectionTitle>
-      <BodyText>Interact with Javascript woo!</BodyText>
+      <BodyText>
+        Use
+        the <CodeSnippet>web_sys</CodeSnippet>, <CodeSnippet>js_sys</CodeSnippet> and <CodeSnippet>wasm_bindgen</CodeSnippet> libraries
+        to interact with Javascript.
+      </BodyText>
     </>,
     code: <CodeExample>
-      Formatted code example
+      smd!(<br />
+      &nbsp;&nbsp;&lt;div<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;on_click=&#123;|_| web_sys::window()<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.unwrap()<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.location()<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.set_hash("smithy")<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&#125;<br />
+      &nbsp;&nbsp;&gt;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;Click me to change your browser's hash<br />
+      &nbsp;&nbsp;&lt;/div&gt;<br />
+      )
     </CodeExample>,
   },
-  {
-    description: <>
-      <BodySectionTitle>Futures? No Problem.</BodySectionTitle>
-      <BodyText>Yeah...</BodyText>
-    </>,
-    code: <CodeExample>
-      Formatted code example
-    </CodeExample>,
-  },
+  // TODO this section
+  // {
+  //   description: <>
+  //     <BodySectionTitle>Futures? No Problem.</BodySectionTitle>
+  //     <BodyText>Yeah...</BodyText>
+  //   </>,
+  //   code: <CodeExample>
+  //     Formatted code example
+  //   </CodeExample>,
+  // },
 ];
