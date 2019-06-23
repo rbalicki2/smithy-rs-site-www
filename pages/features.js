@@ -14,7 +14,7 @@ import {
   BodyContainer,
 } from 'src/page-ui';
 
-export default class Index extends Component {
+export default class Features extends Component {
   static async getInitialProps({ asPath }) {
     return {
       path: asPath,
