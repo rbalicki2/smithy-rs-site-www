@@ -6,6 +6,12 @@ import Header from 'src/Header';
 import Head from 'src/Head';
 import Footer from 'src/Footer';
 
+// TODO
+// - mobile header and footer
+// - getting started page
+// - examples
+// - icon, meta, etc
+
 import {
   HeadingContainer,
   PageTitle,

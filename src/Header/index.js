@@ -6,11 +6,19 @@ import { Flexxor, Container } from 'src/page-ui';
 import Logo from 'src/SmithyLogo';
 
 import { breakpointInfo, colors } from 'src/style-constants';
-import { BOX_SHADOW } from 'src/page-ui';
 import HEADER_HEIGHT from './height';
+import Hamburger from './hamburger.svg';
+import Cancel from './cancel.svg';
 
 const BODY_CLASS_NAME = 'margin-top-class';
 const BORDER_SIZE = 2;
+
+import {
+  BOX_SHADOW,
+  OnlyMobile,
+  OnlyDesktop,
+} from 'src/page-ui';
+import StateProvider from 'src/util/StateProvider';
 
 const HeaderPositioning = styled.div`
   height: ${HEADER_HEIGHT}px;
@@ -26,6 +34,7 @@ const HeaderPositioning = styled.div`
   color: ${colors.WHITE};
   box-shadow: ${BOX_SHADOW};
   z-index: 1;
+  align-items: center;
 `;
 
 const HeaderLeftSide = styled.div`
@@ -50,10 +59,10 @@ const BaseLink = styled.a`
   ${props => props.isCurrent
     ? `
       color: ${colors.HIGHLIGHT_SOFT};
-      border-bottom-color: ${colors.HIGHLIGHT_SOFT};
+      border-bottom-color: ${props.isMobile ? 'transparent' : colors.HIGHLIGHT_SOFT};
       &:hover {
         color: ${colors.HIGHLIGHT};
-        border-bottom-color: ${colors.HIGHLIGHT};
+        border-bottom-color: ${props.isMobile ? 'transparent' : colors.HIGHLIGHT};
       }
     `
     : `
@@ -78,34 +87,79 @@ const HeaderGlobalStyle = createGlobalStyle`
   }
 `;
 
+const LinkSection = styled.div`
+  background-color: ${colors.BLACK};
+  display: flex;
+  flex-direction: column;
+`;
+
 const LogoLink = styled(BaseLink)`line-height: 1px; cursor: pointer; padding-left: 0;`;
 
 const pathMatches = (path, target) => path.startsWith(target);
 
+const getSmithyLogo = (path) => <Link href="/">
+  <LogoLink isCurrent={path === '/'}>
+    <Logo />
+  </LogoLink>
+</Link>
+
+const codeLink = <InnerLink href="https://www.github.com/rbalicki2/smithy">Code</InnerLink>;
+
+const links = (path, isMobile) => <>
+  <Link href="/features">
+    <InnerLink isCurrent={pathMatches(path, "/features")} isMobile={isMobile}>Features</InnerLink>
+  </Link>
+  <Link href="/guide">
+    <InnerLink isCurrent={pathMatches(path, "/guide")} isMobile={isMobile}>Guide</InnerLink>
+  </Link>
+  <Link href="/news">
+    <InnerLink isCurrent={pathMatches(path, "/news")} isMobile={isMobile}>News</InnerLink>
+  </Link>
+  <InnerLink href="https://docs.smithy.rs/smithy/">Docs</InnerLink>
+  <Link href="/examples">
+    <InnerLink isCurrent={pathMatches(path, "/examples")} isMobile={isMobile}>Examples</InnerLink>
+  </Link>
+  { isMobile && codeLink }
+</>;
+
 export default ({ path }) => (<>
   <HeaderGlobalStyle />
-  <HeaderPositioning>
-    <Container>
-      <Flexxor>
-        <HeaderLeftSide>
-          <Link href="/">
-            <LogoLink isCurrent={path === '/'}>
-              <Logo />
-            </LogoLink>
-          </Link>
-          <Link href="/features">
-            <InnerLink isCurrent={pathMatches(path, "/features")}>Features</InnerLink>
-          </Link>
-          <Link href="/guide">
-            <InnerLink isCurrent={pathMatches(path, "/guide")}>Guide</InnerLink>
-          </Link>
-          <Link href="/news">
-            <InnerLink isCurrent={pathMatches(path, "/news")}>News</InnerLink>
-          </Link>
-          <InnerLink href="https://docs.smithy.rs/smithy/">Docs</InnerLink>
-        </HeaderLeftSide>
-        <InnerLink href="https://www.github.com/rbalicki2/smithy">Code</InnerLink>
-      </Flexxor>
-    </Container>
-  </HeaderPositioning>
+  <OnlyDesktop>
+    <HeaderPositioning>
+      <Container>
+        <Flexxor>
+          <HeaderLeftSide>
+            { getSmithyLogo(path) }
+            { links(path) }
+          </HeaderLeftSide>
+          { codeLink }
+        </Flexxor>
+      </Container>
+    </HeaderPositioning>
+  </OnlyDesktop>
+  <OnlyMobile>
+    <StateProvider>{(isOpen, setOpen) => <>
+      <HeaderPositioning>
+        <Container>
+          <Flexxor>
+            <HeaderLeftSide>
+              {
+                !isOpen && <Hamburger
+                  style={{ fill: colors.WHITE }}
+                  onClick={() => { setOpen(true); window.scrollTo(0, 0); }}
+                />
+              }
+              {
+                isOpen && <Cancel style={{ fill: colors.WHITE, height: 40 }} onClick={() => setOpen(false)} />
+              }
+            </HeaderLeftSide>
+            { getSmithyLogo(path) }
+          </Flexxor>
+        </Container>
+      </HeaderPositioning>
+      {
+        isOpen && <LinkSection>{ links(path, true) }</LinkSection>
+      }
+    </>}</StateProvider>
+  </OnlyMobile>
 </>);
