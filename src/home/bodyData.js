@@ -64,7 +64,10 @@ export default [
       )
     </CodeExample>,
   },
+<<<<<<< HEAD
   // TODO this section
+=======
+>>>>>>> 92f538be248274b1a54a3cc6f5abc4a6e7828339
   // {
   //   description: <>
   //     <BodySectionTitle>Futures? No Problem.</BodySectionTitle>
