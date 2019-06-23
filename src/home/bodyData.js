@@ -33,7 +33,7 @@ export default [
       &nbsp;&nbsp;let mut count = 0;<br />
       &nbsp;&nbsp;let app = smithy::smd!(<br />
       &nbsp;&nbsp;&nbsp;&nbsp;&lt;div on_click=&#123;|_| count = count + 1&#125;&gt;<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I have been clicked &lt;b&gt;&#123;count&#125;&lt;/b&gt; times.<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I have been clicked &#123;count&#125; times.<br />
       &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
       &nbsp;&nbsp;);<br />
       <br />
