@@ -11,6 +11,8 @@ import Footer from 'src/Footer';
 // - getting started page
 // - examples
 // - icon, meta, etc
+// - update version of smithy
+// - change name of smd macro
 
 import {
   HeadingContainer,

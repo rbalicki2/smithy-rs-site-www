@@ -4,7 +4,7 @@ module.exports = {
   webpack: (config) => {
     config.resolve.alias.src = path.resolve(__dirname, 'src');
     config.module.rules.push({
-      test: /\.(png|gif|mp4|jpg|otf|eot|ttf)$/,
+      test: /\.(png|gif|mp4|jpg|otf|eot|ttf|ico|xml|webmanifest)$/,
       exclude: /(node_modules)/,
       use: [
         'babel-loader',

@@ -144,13 +144,14 @@ export default ({ path }) => (<>
           <Flexxor>
             <HeaderLeftSide>
               {
-                !isOpen && <Hamburger
-                  style={{ fill: colors.WHITE }}
-                  onClick={() => { setOpen(true); window.scrollTo(0, 0); }}
-                />
+                !isOpen && <a onClick={() => { setOpen(true); window.scrollTo(0, 0); }}>
+                  <Hamburger style={{ fill: colors.WHITE }} />
+                </a>
               }
               {
-                isOpen && <Cancel style={{ fill: colors.WHITE, height: 40 }} onClick={() => setOpen(false)} />
+                isOpen && <a onClick={() => setOpen(false)}>
+                  <Cancel style={{ fill: colors.WHITE, height: 40 }} />
+                </a>
               }
             </HeaderLeftSide>
             { getSmithyLogo(path) }

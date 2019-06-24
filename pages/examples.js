@@ -34,14 +34,14 @@ export default class Examples extends Component {
       >
         <PageTitle>Examples</PageTitle>
         <PageSubtitle color={colors.BLACK} marginBottom={5}>
-          Build with Smithy
+          Built with Smithy
         </PageSubtitle>
       </HeadingContainer>
       <BodyContainer>
         <ul>
           {
             examplesData.map((item) =>
-              <li><LinkStyle href={item.url}>{item.title}</LinkStyle> - <LinkStyle href={item.codeUrl}>Source Code</LinkStyle></li>
+              <li key={item.url}><LinkStyle href={item.url}>{item.title}</LinkStyle> - <LinkStyle href={item.codeUrl}>Source Code</LinkStyle></li>
             )
           }
         </ul>
