@@ -11,7 +11,13 @@ export default [
   {
     anchor: 'getting-started',
     title: 'Getting started',
-    body: 'TODO this section',
+    body: <>
+      <p>
+        See <LinkStyle href="https://www.github.com/rbalicki2/smithy_app_server">
+          the <code>smithy_app_server</code> repository
+        </LinkStyle> to get started.
+      </p>
+    </>,
   },
   {
     anchor: 'smd-syntax',

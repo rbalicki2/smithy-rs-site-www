@@ -7,12 +7,12 @@ import Head from 'src/Head';
 import Footer from 'src/Footer';
 
 // TODO
-// - mobile header and footer
+// x mobile header and footer
 // - getting started page
-// - examples
-// - icon, meta, etc
-// - update version of smithy
+// x examples
+// x icon, meta, etc
 // - change name of smd macro
+// - update version of smithy
 
 import {
   HeadingContainer,
