@@ -6,14 +6,6 @@ import Header from 'src/Header';
 import Head from 'src/Head';
 import Footer from 'src/Footer';
 
-// TODO
-// x mobile header and footer
-// - getting started page
-// x examples
-// x icon, meta, etc
-// - change name of smd macro
-// - update version of smithy
-
 import {
   HeadingContainer,
   PageTitle,
