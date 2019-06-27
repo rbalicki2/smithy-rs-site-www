@@ -24,7 +24,7 @@ export default [
     title: <><code>smd!</code> syntax</>,
     body: <>
       <p>
-        The syntax to use when invoking the <code>smd!</code> and <code>smd_no_move!</code> macros
+        The syntax to use when invoking the <code>smd!</code> and <code>smd_borrowed!</code> macros
         is as follows:
       </p>
       <MultilineCode>
@@ -214,7 +214,7 @@ export default [
         hash-change-events<br />
         pop-state-events<br />
         promise-rejection-events<br />
-        debug-logs<br />
+        browser-logs<br />
         smd-logs<br />
       </MultilineCode>
     </>,
@@ -224,7 +224,7 @@ export default [
     title: <>How <code>smd!</code> works under the hood</>,
     body: <>
       <p>
-        <code>smd!</code> and <code>smd_no_move!</code> are macros that transform something like
+        <code>smd!</code> and <code>smd_borrowed!</code> are macros that transform something like
       </p>
       <MultilineCode>
         <BasicSnippet />
@@ -241,7 +241,7 @@ export default [
       </p>
       <p>
         The other thing to note is that <code>smd!</code> produces <code>move</code> closures,
-        while <code>smd_no_move!</code> does
+        while <code>smd_borrowed!</code> does
         not. <LinkStyle href="#nested-calls-to-smd">See why that matters.</LinkStyle>
       </p>
     </>,
@@ -251,10 +251,10 @@ export default [
     title: <>Nesting calls to <code>smd!</code></>,
     body: <>
       <p>
-        The <code>smd!</code> and <code>smd_no_move!</code> macros produce
+        The <code>smd!</code> and <code>smd_borrowed!</code> macros produce
         a <code>SmithyComponent</code>, a wrapper
         around <code>Box&lt;FnMut(Phase) -&gt; PhaseResult&gt;</code>. In the <code>smd!</code> case,
-        this wrapper is a <code>move</code> closure. In the <code>smd_no_move!</code> case,
+        this wrapper is a <code>move</code> closure. In the <code>smd_borrowed!</code> case,
         it is not.
       </p>
       <p>
@@ -313,18 +313,18 @@ export default [
       <p>
         There are several ways out of this conundrum. For example, avoiding
         nested calls to <code>smd!</code>. However, this will often be infeasible,
-        and in those cases you can use the <code>smd_no_move!</code> macro.
+        and in those cases you can use the <code>smd_borrowed!</code> macro.
       </p>
       <p>
-        <code>smd_no_move!</code> does the same thing as <code>smd!</code>,
+        <code>smd_borrowed!</code> does the same thing as <code>smd!</code>,
         but it creates a non-move closure. Changing the inner macro invocation
-        to <code>smd_no_move!</code> will cause this code to compile:
+        to <code>smd_borrowed!</code> will cause this code to compile:
       </p>
       <MultilineCode>
         let mut some_vec: Vec&lt;()&gt; = vec![];<br />
         let app = smd!(<br />
         &nbsp;&nbsp;&#123;<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;smd_no_move!(<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;smd_borrowed!(<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div on_click=&#123;|_| some_vec.push(())&#125; /&gt;<br />
         &nbsp;&nbsp;&nbsp;&nbsp;)<br />
         &nbsp;&nbsp;&#125;<br />

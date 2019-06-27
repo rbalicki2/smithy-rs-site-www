@@ -98,7 +98,7 @@ export default class Index extends Component {
 //       let mut count = Some("some string".to_string());<br />
 //       let mut byah = smd!(&#123;<br />
 //       &nbsp;&nbsp;match count &#123;<br />
-//       &nbsp;&nbsp;&nbsp;&nbsp;Some(_) =&gt; smd_no_move!(&gt;div on_click=&#123;|_| count = None&#125;&lt;found some&gt;/div&lt;),<br />
+//       &nbsp;&nbsp;&nbsp;&nbsp;Some(_) =&gt; smd_borrowed!(&gt;div on_click=&#123;|_| count = None&#125;&lt;found some&gt;/div&lt;),<br />
 //       &nbsp;&nbsp;&nbsp;&nbsp;None =&gt; smd!(none),<br />
 //       &nbsp;&nbsp;&#125;<br />
 //       &#125;);
@@ -106,12 +106,12 @@ export default class Index extends Component {
 //     </p>
 //     <p>
 //       There are two variants of the <CodeSnippet>smd!</CodeSnippet> macro. The
-//       aforementioned one, and <CodeSnippet>smd_no_move!</CodeSnippet>. (These names
+//       aforementioned one, and <CodeSnippet>smd_borrowed!</CodeSnippet>. (These names
 //       are not intuitive, and will change.) Each of these return a wrapper 
 //       around <CodeSnippet>Box&lt;FnMut(Phase) -> PhaseResult + 'a&gt;</CodeSnippet>.
 //       In the <CodeSnippet>smd!</CodeSnippet> case, this is
 //       a <CodeSnippet>move</CodeSnippet> closure. In
-//       the <CodeSnippet>smd_no_move!</CodeSnippet> case, it is not.
+//       the <CodeSnippet>smd_borrowed!</CodeSnippet> case, it is not.
 //     </p>
 //     <p>
 //       A move closure captures its 
