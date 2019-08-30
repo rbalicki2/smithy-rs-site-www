@@ -2,6 +2,7 @@ import {
   BodySectionTitle,
   MultilineCode,
   LinkStyle,
+  CodeSnippet,
 } from 'src/page-ui';
 import BasicSnippet from 'src/snippets/BasicSnippet';
 
@@ -12,12 +13,54 @@ export default [
     anchor: 'getting-started',
     title: 'Getting started',
     body: <>
+      <p>Make sure you have your <LinkStyle href="/guide#dependencies">dependencies</LinkStyle> installed, and then:</p>
+      <MultilineCode>
+        npm init smithy-app ./my_app<br />
+        cd my_app<br />
+        npm start<br />
+      </MultilineCode>
       <p>
-        See <LinkStyle href="https://www.github.com/rbalicki2/smithy_app_server">
-          the <code>smithy_app_server</code> repository
-        </LinkStyle> to get started.
+        🎉 Boom! Your Smithy app is running on <CodeSnippet>localhost:8080</CodeSnippet>. 🎉
+      </p>
+      <p>
+        Next, go into your <CodeSnippet>src/</CodeSnippet> folder and start playing around!
       </p>
     </>,
+  },
+  {
+    anchor: 'dependencies',
+    title: 'Dependencies',
+    body: <>
+      <p>
+        In order to run Smithy, you must have the following dependencies installed:
+      </p>
+      <ul>
+        <li>
+          the <LinkStyle href="https://www.rust-lang.org/tools/install">
+            Rust nightly toolchain
+          </LinkStyle>. I am currently working off
+          of <CodeSnippet>rustc 1.37.0-nightly (8ebd67e4e
+          2019-06-27)</CodeSnippet>. Please also add
+          the <CodeSnippet>wasm32-unknown-unknown</CodeSnippet> target.
+        </li>
+        <li>
+          <LinkStyle href="https://rustwasm.github.io/wasm-pack/installer/">
+            wasm-pack
+          </LinkStyle>, and
+        </li>
+        <li>
+          <LinkStyle href="https://nodejs.org/en/download/">
+            node
+          </LinkStyle>.
+        </li>
+      </ul>
+      <p>
+        (These requirements are the same as the requirements
+        for <LinkStyle href="https://github.com/rustwasm/rust-webpack-template">
+          the Rust Webpack template
+        </LinkStyle>.
+      </p>
+    </>
   },
   {
     anchor: 'smd-syntax',

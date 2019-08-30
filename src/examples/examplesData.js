@@ -1,5 +1,10 @@
 export default [
   {
+    url: '/examples/rustactoe/',
+    title: 'Tic-tac-toe, written in Smithy',
+    codeUrl: 'https://github.com/rbalicki2/rustactoe',
+  },
+  {
     url: '/examples/itunes',
     title: 'Search the iTunes API with Smithy',
     codeUrl: 'https://github.com/rbalicki2/smithy_itunes_search',
