@@ -2,6 +2,10 @@ import React from 'react';
 
 export default [
   {
+    url: 'https://www.youtube.com/watch?v=3Z5JpQMpN7Q',
+    title: 'Building WebAssembly Apps in Rust using Smithy',
+  },
+  {
     url: 'https://medium.com/@robert.balicki_2494/rolling-your-own-router-with-smithy-v0-0-3-2de17cdbb49',
     title: 'Rolling your own Router with Smithy v0.0.3',
   },
