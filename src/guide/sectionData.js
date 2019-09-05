@@ -152,7 +152,7 @@ export default [
       <BodySectionTitle><code>dom_node</code></BodySectionTitle>
       <p>
         <code>dom_node</code>s in <code>smd!</code> invocations are either self-closing or not self-closing.
-        Self-closing <code>dom_node</code>s are expressed as follows:
+        Not-self-closing <code>dom_node</code>s are expressed as follows:
       </p>
       <MultilineCode>
         &lt;name-of-dom-node<br />
