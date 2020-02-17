@@ -60,10 +60,10 @@ export default {
       </p>
       <p>
         <code>
-          let inner_component = smd!(&lt;div&gt;inner&lt;/div&gt;);<br />
+          let mut inner_component = smd!(&lt;div&gt;inner&lt;/div&gt;);<br />
           let component_with_props = |s: &amp;'static str| smd!(&#123; s &#125;);<br />
           let outer_component = smd!(&lt;div&gt;<br />
-          &nbsp;&nbsp;&#123; inner_component &#125;<br />
+          &nbsp;&nbsp;&#123; &amp;mut inner_component &#125;<br />
           &nbsp;&nbsp;&#123; component_with_props("component with props") &#125;<br />
           &lt;/div&gt;);
         </code>
