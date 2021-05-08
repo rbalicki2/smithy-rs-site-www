@@ -19,6 +19,7 @@ import {
   OnlyMobile,
   OnlyDesktop,
 } from 'src/page-ui';
+import Advertisement from 'src/Advertisement';
 import columnData from 'src/home/columnData';
 import bodyData from 'src/home/bodyData';
 
@@ -46,6 +47,7 @@ export default class Index extends Component {
       <Head pageTitle="Smithy" />
       <Header path={this.props.path} />
       <HeadingContainer>
+        <Advertisement />
         <PageTitle>Smithy</PageTitle>
         <PageSubtitle>
           Build WebAssembly applications with Rust.
